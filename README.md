@@ -20,8 +20,6 @@ The goals / steps of this project are the following:
 
 
 
-
-
 ------------------------------------------------
 you need to install  Python 3 beside with the numpy, opencv and matplotlib  packages
 
