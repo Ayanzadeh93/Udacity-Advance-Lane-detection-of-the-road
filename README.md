@@ -53,7 +53,7 @@ for using  video package please install moviepy
 
 
 ---------------------------------------------------------------------------------------------------------------------
-windows (not recommened)
+## windows (not recommened)
 
 There is not any package for opencv in anaconda (you have to install opencv with the normal mode)
 
