@@ -35,7 +35,7 @@ installing anaconda(python3 version)
 if you have install anaconda for python 2.7 you should have install new environment in that version
 
 > conda create --name=yourNewEnvironment python=3 anaconda
-> source activate [environmentname]
+>> source activate [environmentname]
 
 
 #pip install pillow
