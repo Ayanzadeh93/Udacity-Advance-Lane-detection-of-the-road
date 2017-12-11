@@ -28,7 +28,7 @@ you need to install  Python 3 beside with the numpy, opencv and matplotlib  pack
 please install following dependecies:
 
 ------------------------------------------------------------
-Linux/Ubuntu
+## Linux/Ubuntu
 
 installing anaconda(python3 version)
 
@@ -38,7 +38,7 @@ if you have install anaconda for python 2.7 you should have install new environm
 > source activate [environmentname]
 
 
-# pip install pillow
+#pip install pillow
 #conda install -c https://conda.anaconda.org/menpo opencv3
 
 after installing check the Cv2 package with this:
