@@ -58,7 +58,66 @@ There is not any package for opencv in anaconda (you have to install opencv with
 
 --------------------------------------------------------------------------------------------------------------------
 
-    1-Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
+## Additional resources for autonomous dribvers
+
+
+1-Nanodegrees Programs: https://www.udacity.com/nanodegree
+Nanodegree Plus (job guarantee): https://www.udacity.com/nanodegree/plus 
+UConnect (weekly in-person study sessions):  https://www.udacity.com/uconnect 
+
+2-Courses on Udacity Machine Learning Engineer Nanodegree by Google (Currently Available): https://www.udacity.com/course/machine-learning-engineer-nanodegree-by-google--nd009
+
+3-Artificial Intelligence for Robots (Free Course) https://www.udacity.com/course/artificial-intelligence-for-robotics--cs373
+
+3-Intro to Statistics (Free Course) https://www.udacity.com/course/intro-to-statistics--st101
+
+4-Deep Learning (Free Course) https://www.udacity.com/course/deep-learning--ud730
+
+5-Programming Foundations with Python (Free Course) https://www.udacity.com/course/programming-foundations-with-python--ud036 
+
+6-Introduction to Computer Vision: https://www.udacity.com/course/introduction-to-computer-vision--ud810
+Cool topics for self driving car course should cover: 
+Deep Learning, Computer Vision, Vehicle Dynamics, Controllers, Localization, Mapping (SLAM), Sensors & Fusion
+
+### Reading Resources Udacity
+https://medium.com/udacity/self-driving-car-employers-f24c0013cf1d#.3jlgb1c1i 
+https://www.quora.com/Are-Udacity-Nanodegrees-worth-it-for-finding-a-job
+http://blog.udacity.com/2015/03/udacity-nanodegree-reviews-your-questions-answered.html
+http://blog.udacity.com/2015/03/udacity-nanodegree-reviews-your-questions-answered.html
+
+### News / Resources
+http://www.bbc.com/news/technology-36952252
+https://techcrunch.com/2016/03/11/gm-buys-self-driving-tech-startup-cruise-as-part-of-a-plan-to-make-driverless-cars/
+http://money.cnn.com/2016/04/04/technology/george-hotz-comma-ai-andreessen-horowitz/
+https://techcrunch.com/2016/06/30/zoox-raises-200-million-at-1-billion-valuation-for-its-self-driving-cars/
+https://www.youtube.com/watch?v=fQmOpxEvpvI
+http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
+https://www.cbinsights.com/blog/autonomous-driverless-vehicles-corporations-list/ 
+http://www.theverge.com/2016/6/6/11866868/comma-ai-george-hotz-interview-self-driving-cars
+Trucking Industry: http://ot.to/
+Racing Industry: https://blogs.nvidia.com/blog/2016/06/03/autonomous-vehicles/
+
+### Open Source Projects
+https://www.reddit.com/r/SelfDrivingCars/comments/4vz3y7/commaai_for_the_people_to_experiment_with_too/
+
+### Datasets
+https://www.cityscapes-dataset.com/
+http://robotcar-dataset.robots.ox.ac.uk/examples/ 
+http://selfracingcars.com/blog/2016/7/26/polysync
+http://data.selfracingcars.com/
+
+### Other Resources
+Stanford Convolutional Neural Networks for Visual Recognition http://cs231n.github.io/
+Deep Learning Framework written in Swift to use on apple devices (written by @amund) http://deeplearningkit.org/
+Image segmentation from comma.ai https://commaai.blogspot.de/2016/07/self-coloring-books.html?m=1
+
+Hardware
+Berkeley BARC
+MIT Racecar
+GeorgiaTech AutoRally
+
+
+
     2-Apply a distortion correction to raw images.
     3-Use color transforms, gradients, etc., to create a thresholded binary image.
     4-Apply a perspective transform to rectify binary image ("birds-eye view").
