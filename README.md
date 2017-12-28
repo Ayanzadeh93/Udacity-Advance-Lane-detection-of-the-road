@@ -80,12 +80,18 @@ Cool topics for self driving car course should cover:
 Deep Learning, Computer Vision, Vehicle Dynamics, Controllers, Localization, Mapping (SLAM), Sensors & Fusion
 
 ### Reading Resources Udacity
+
 https://medium.com/udacity/self-driving-car-employers-f24c0013cf1d#.3jlgb1c1i 
+
 https://www.quora.com/Are-Udacity-Nanodegrees-worth-it-for-finding-a-job
-http://blog.udacity.com/2015/03/udacity-nanodegree-reviews-your-questions-answered.html
+
 http://blog.udacity.com/2015/03/udacity-nanodegree-reviews-your-questions-answered.html
 
+http://blog.udacity.com/2015/03/udacity-nanodegree-reviews-your-questions-answered.html
+
+
 ### News / Resources
+
 http://www.bbc.com/news/technology-36952252
 
 https://techcrunch.com/2016/03/11/gm-buys-self-driving-tech-startup-cruise-as-part-of-a-plan-to-make-driverless-cars/
