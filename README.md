@@ -87,17 +87,27 @@ http://blog.udacity.com/2015/03/udacity-nanodegree-reviews-your-questions-answer
 
 ### News / Resources
 http://www.bbc.com/news/technology-36952252
+
 https://techcrunch.com/2016/03/11/gm-buys-self-driving-tech-startup-cruise-as-part-of-a-plan-to-make-driverless-cars/
+
 http://money.cnn.com/2016/04/04/technology/george-hotz-comma-ai-andreessen-horowitz/
+
 https://techcrunch.com/2016/06/30/zoox-raises-200-million-at-1-billion-valuation-for-its-self-driving-cars/
+
 https://www.youtube.com/watch?v=fQmOpxEvpvI
+
 http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
+
 https://www.cbinsights.com/blog/autonomous-driverless-vehicles-corporations-list/ 
+
 http://www.theverge.com/2016/6/6/11866868/comma-ai-george-hotz-interview-self-driving-cars
+
 Trucking Industry: http://ot.to/
+
 Racing Industry: https://blogs.nvidia.com/blog/2016/06/03/autonomous-vehicles/
 
 ### Open Source Projects
+
 https://www.reddit.com/r/SelfDrivingCars/comments/4vz3y7/commaai_for_the_people_to_experiment_with_too/
 
 ### Datasets
