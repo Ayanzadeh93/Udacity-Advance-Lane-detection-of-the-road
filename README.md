@@ -117,9 +117,13 @@ Racing Industry: https://blogs.nvidia.com/blog/2016/06/03/autonomous-vehicles/
 https://www.reddit.com/r/SelfDrivingCars/comments/4vz3y7/commaai_for_the_people_to_experiment_with_too/
 
 ### Datasets
+
 https://www.cityscapes-dataset.com/
+
 http://robotcar-dataset.robots.ox.ac.uk/examples/ 
+
 http://selfracingcars.com/blog/2016/7/26/polysync
+
 http://data.selfracingcars.com/
 
 ### Other Resources
