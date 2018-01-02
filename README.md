@@ -128,7 +128,9 @@ http://data.selfracingcars.com/
 
 ### Other Resources
 Stanford Convolutional Neural Networks for Visual Recognition http://cs231n.github.io/
+
 Deep Learning Framework written in Swift to use on apple devices (written by @amund) http://deeplearningkit.org/
+
 Image segmentation from comma.ai https://commaai.blogspot.de/2016/07/self-coloring-books.html?m=1
 
 [1] Hee Lee, Gim, Friedrich Faundorfer, and Marc Pollefeys. "Motion estimation for self-driving
