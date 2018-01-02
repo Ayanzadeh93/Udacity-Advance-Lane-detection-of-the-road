@@ -131,10 +131,47 @@ Stanford Convolutional Neural Networks for Visual Recognition http://cs231n.gith
 Deep Learning Framework written in Swift to use on apple devices (written by @amund) http://deeplearningkit.org/
 Image segmentation from comma.ai https://commaai.blogspot.de/2016/07/self-coloring-books.html?m=1
 
-Hardware
-Berkeley BARC
-MIT Racecar
-GeorgiaTech AutoRally
+Hee Lee, Gim, Friedrich Faundorfer, and Marc Pollefeys. "Motion estimation for self-driving
+cars with a generalized camera." ​ Proceedings of the IEEE Conference on Computer Vision and
+Pattern ​ ​ Recognition ​ . ​ ​ 2013.
+
+Levinson, Jesse, et al. "Towards fully autonomous driving: Systems and algorithms."
+Intelligent ​ ​ Vehicles ​ ​ Symposium ​ ​ (IV), ​ ​ 2011 ​ ​ IEEE ​ . ​ ​ IEEE,​ ​ 2011.
+
+
+M. Bojarski, D. Del Testa, D. Dworakowski, B. Firner, B. Flepp, P. Goyal, L. D. Jackel, M.
+Monfort, U. Muller, J. Zhang, et al. End to end learning for self-driving cars.arXiv preprint
+arXiv:1604.07316,​ ​ 2016
+
+H. Xu, Y. Gao, F. Yu, and T. Darrell. End-to-end learning of driving models from large-scale
+video​ ​ datasets.​ ​ arXiv​ ​ preprint​ ​ arXiv:1612.01079,​ ​ 2016.
+
+
+C. Szegedy et al., “Going deeper with convolutions,” Proc. IEEE Comput. Soc. Conf. Comput. Vis. Pattern Recognit., vol. 07–12–June, pp. 1–9, 2015.
+
+
+Udacity.Public​ ​ driving​ ​ dataset.​ ​ https://www.udacity.com/self-driving-car,​ ​ 2017.​ ​ [Online;
+accessed​ ​ 07-Mar-2017].
+
+
+Comma.ai.Public accessed​ ​ 07-Mar-2017].driving   dataset.https://github.com/commaai/research,2017.[Online;
+
+
+Dickmanns and B. Mysliwetz, “Recursive 3-D road and relative ego- state recognition,”
+IEEE​ ​ Trans.​ ​ Pattern​ ​ Anal.​ ​ Mach.​ ​ Intell.,​ ​ vol.​ ​ 14,​ ​ no.​ ​ 2,​ ​ pp.​ ​ 199–213,​ ​ Feb.​ ​ 1992.
+\bibitem{car accident}
+​$ Car​ ​ accidents.​ http://en.wikipedia.org/wiki/car_accident $
+
+
+Caltech​ ​ Lanes​ ​ datasets​ , ​ ​ http://www.mohamedaly.info/datasets/caltech-lanes
+
+
+T. Saudi, J. Hijazi, and J. Sulaiman, “Fast lane detection with randomized hough
+transform,”​ ​ in​ ​ Proc.​ ​ Symp.​ ​ Inf.​ ​ Technol.,​ ​ 2008,​ ​ vol.​ ​ 4,​ ​ pp.​ ​ 1–5
+
+
+J. Wang, Y. Wu, Z. Liang, and Y. Xi, “Lane detection based on random hough transform
+on​ ​ region​ ​ of​ ​ interesting,”​ ​ in​ ​ Proc.​ ​ IEEE​ ​ Conf.​ ​ Inform.​ ​ Autom.,​ ​ 2010,​ ​ pp.​ ​ 1735–1740.
 
 
 
