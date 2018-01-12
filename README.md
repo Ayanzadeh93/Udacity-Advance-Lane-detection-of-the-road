@@ -106,12 +106,14 @@ The goals / steps of this project were the following:
 Abstract—In this project we leverage we present application to lane detection of the road in the urban streets based on the some
 image processing techniques, we will evaluate the performance of method in different type of the datasets such as straight and curve road in different weather condition. we proposed the results of this application for most of the image datasets in the experiment and result setction.
 
-Index Terms—Segmentation, Lane finder,computer vision, Image Processing, Udacity, Autonomous drivers
+#####Index Terms—Segmentation, Lane finder,computer vision, Image Processing, Udacity, Autonomous drivers
+
 --------------------------------------------------------------------------------------------------
 
 
 
 ##Camera Calibration
+Image distoration occures when cameras look image at objects that have 3D feature in the real-world and want totransform them into 2D plane in the image. Actually this transform can not be effecient and bring a lot of distoration in the image, this distoration changes the shape and size of the object in this transformation. So, the fisrst steps in an- alyzing the images distoration level as pre-processing step. actually this step has significant effect on the performance of lane detection, because distorted images show the lane of the image in some parts curvy and keep it out the the detection application from reality and also makes an image look tilted so that some objects appear farther away or closer than they actually are in reality. Camera Calibration maps 3D points 2D points one. This can be done with the imagesthat has grid pattern such as a chessboard. This process uses multiple images of chessboards from different distance and angle, the images are putted as input and return the camera calibration values and we use this value matrix withe the original images of datasets to make them unsorted image.
 Before starting the implementation of the lane detection pipeline, the first thing that should be done is camera calibration. That would help us:
 * undistort the images coming from camera, thus improving the quality of geometrical measurement
 * estimate the spatial resolution of pixels per meter in both *x* and *y* directions
