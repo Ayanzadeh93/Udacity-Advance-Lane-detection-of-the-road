@@ -103,6 +103,14 @@ The goals / steps of this project were the following:
 [image29]: ./readme_images/warped_lanes.jpg "Undistorted single image"
 [image30]: ./output_images/test5.jpg "Undistorted single image"
 
+Abstract—In this project we leverage we present application to lane detection of the road in the urban streets based on the some
+image processing techniques, we will evaluate the performance of method in different type of the datasets such as straight and curve road in different weather condition. we proposed the results of this application for most of the image datasets in the experiment and result setction.
+
+Index Terms—Segmentation, Lane finder,computer vision, Image Processing, Udacity, Autonomous drivers
+--------------------------------------------------------------------------------------------------
+
+
+
 ##Camera Calibration
 Before starting the implementation of the lane detection pipeline, the first thing that should be done is camera calibration. That would help us:
 * undistort the images coming from camera, thus improving the quality of geometrical measurement
