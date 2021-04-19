@@ -46,15 +46,6 @@ after installing check the Cv2 package with this:
 
 for using  video package please install moviepy
 
-#pip install moviepy
-
-
-
----------------------------------------------------------------------------------------------------------------------
-## windows (not recommened)
-
-There is not any package for opencv in anaconda (you have to install opencv with the normal mode)
-
 
 --------------------------------------------------------------------------------------------------------------------
 **Advanced Lane Finding Project**
