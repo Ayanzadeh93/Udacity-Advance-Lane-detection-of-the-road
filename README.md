@@ -1,56 +1,12 @@
-Advanced Lane Detection
-===
+# Advanced Lane Detection
 
 ![sdc-1-1024x427](https://user-images.githubusercontent.com/25509152/33837471-770be3a2-de9d-11e7-97cc-50c6224bfcc3.png)
 
-- EXECUTIVE SUMMARY
+## Executive Summary
 
 In this Advanced Lane Detection project, we apply computer vision techniques to augment video output with a detected road lane, road radius curvature and road centre offset. The video was supplied by Udacity and captured using the middle camera.
 
 The goals / steps of this project are the following:
-
-- Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
-- Apply a distortion correction to raw images.
-- Use color transforms, gradients, etc., to create a thresholded binary image.
-- Apply a perspective transform to rectify binary image ("birds-eye view").
-- Detect lane pixels and fit to find the lane boundary.
-- Determine the curvature of the lane and vehicle position with respect to center.
-- Warp the detected lane boundaries back onto the original image.
-- Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
-
-![2](https://user-images.githubusercontent.com/25509152/34892057-d74d8478-f7e8-11e7-85d0-7a0b759ad212.png)
-
-------------------------------------------------
-you need to install  Python 3 beside with the numpy, opencv and matplotlib  packages
-
-please install following dependecies:
-
-------------------------------------------------------------
-## Linux/Ubuntu
-
-installing anaconda(python3 version)
-
-if you have install anaconda for python 2.7 you should have install new environment in that version
-
-> conda create --name=yourNewEnvironment python=3 anaconda
->> source activate [environmentname]
-
-
-#pip install pillow
-#conda install -c https://conda.anaconda.org/menpo opencv3
-
-after installing check the Cv2 package with this:
-
->python
->> import cv2
-
-for using  video package please install moviepy
-
-
---------------------------------------------------------------------------------------------------------------------
-**Advanced Lane Finding Project**
-
-The goals / steps of this project were the following:
 
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
 * Apply a distortion correction to raw images.
@@ -60,6 +16,41 @@ The goals / steps of this project were the following:
 * Determine the curvature of the lane and vehicle position with respect to center.
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+
+![2](https://user-images.githubusercontent.com/25509152/34892057-d74d8478-f7e8-11e7-85d0-7a0b759ad212.png)
+
+---
+
+## Installation
+
+You need to install Python 3 along with the `numpy`, `opencv`, and `matplotlib` packages.
+
+Please install the following dependencies:
+
+### Linux / Ubuntu
+
+Install Anaconda (Python 3 version). If you have Anaconda for Python 2.7, create a new environment:
+
+```bash
+conda create --name=yourNewEnvironment python=3 anaconda
+source activate yourNewEnvironment
+pip install pillow
+conda install -c https://conda.anaconda.org/menpo opencv3
+```
+
+After installing, verify the `cv2` package:
+
+```python
+import cv2
+```
+
+For video processing, install `moviepy`:
+
+```bash
+pip install moviepy
+```
+
+---
 
 [//]: # (Image References)
 
@@ -94,17 +85,16 @@ The goals / steps of this project were the following:
 [image29]: ./readme_images/warped_lanes.jpg "Undistorted single image"
 [image30]: ./output_images/test5.jpg "Undistorted single image"
 
-Abstract—In this project we leverage we present application to lane detection of the road in the urban streets based on the some
-image processing techniques, we will evaluate the performance of method in different type of the datasets such as straight and curve road in different weather condition. we proposed the results of this application for most of the image datasets in the experiment and result setction.
+**Abstract** — In this project we present an application for lane detection on urban streets based on image processing techniques. We evaluate the performance of the method on different types of datasets such as straight and curved roads in different weather conditions. We present results of this application across most of the image datasets in the experiments and results section.
 
-#####Index Terms—Segmentation, Lane finder,computer vision, Image Processing, Udacity, Autonomous drivers
+**Index Terms** — Segmentation, Lane Finder, Computer Vision, Image Processing, Udacity, Autonomous Driving
 
---------------------------------------------------------------------------------------------------
-
+---
 
 
-##Camera Calibration
-Image distoration occures when cameras look image at objects that have 3D feature in the real-world and want totransform them into 2D plane in the image. Actually this transform can not be effecient and bring a lot of distoration in the image, this distoration changes the shape and size of the object in this transformation. So, the fisrst steps in an- alyzing the images distoration level as pre-processing step. actually this step has significant effect on the performance of lane detection, because distorted images show the lane of the image in some parts curvy and keep it out the the detection application from reality and also makes an image look tilted so that some objects appear farther away or closer than they actually are in reality. Camera Calibration maps 3D points 2D points one. This can be done with the imagesthat has grid pattern such as a chessboard. This process uses multiple images of chessboards from different distance and angle, the images are putted as input and return the camera calibration values and we use this value matrix withe the original images of datasets to make them unsorted image.
+
+## Camera Calibration
+Image distortion occurs when cameras transform objects that have 3D features in the real world into a 2D plane in the image. This transformation is not perfect and introduces a lot of distortion, changing the apparent shape and size of objects. The first step in analyzing images is therefore distortion correction as a pre-processing step. This step has a significant effect on the performance of lane detection, because distorted images can make lanes appear curvy in some parts, throw off the detection algorithm, and make objects appear farther away or closer than they actually are. Camera calibration maps 3D points to 2D points, and can be done with images that have a grid pattern such as a chessboard. This process uses multiple images of chessboards taken from different distances and angles. These images are passed as input and return the camera calibration values; we then use this calibration matrix with the original dataset images to produce undistorted images.
 Before starting the implementation of the lane detection pipeline, the first thing that should be done is camera calibration. That would help us:
 * undistort the images coming from camera, thus improving the quality of geometrical measurement
 * estimate the spatial resolution of pixels per meter in both *x* and *y* directions
@@ -113,9 +103,9 @@ For this project, the calibration pipeline is implemented in function `calibrate
 
 The procedures start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0. Also,  I am assuming that the size of the chessboard pattern is the same for all images, so the object points will be the same for each calibration image.
 
-Then, the calibration images are sequentially loaded, converted to grayscale and chessboard pattern is looked for using `cv2.findChessboardCorners`. When the pattern is found, the positions of the corners get refined further to sub-pixel accuracy using `cv2.cornerSubPix`. That improves the accuracy of the calibration. Corner coordinates get appended to the list containing all the image points, while prepared "object points" gets appended to the list containing all the object points. 
+Then, the calibration images are sequentially loaded, converted to grayscale and chessboard pattern is looked for using `cv2.findChessboardCorners`. When the pattern is found, the positions of the corners get refined further to sub-pixel accuracy using `cv2.cornerSubPix`. That improves the accuracy of the calibration. Corner coordinates get appended to the list containing all the image points, while prepared "object points" gets appended to the list containing all the object points.
 
-The distortion coefficients and camera matrix are computed using `cv2.calibrateCamera()` function, where image and object points are passed as inputs. It is important to check if the result is satisfactory, since calibration is a nonlinear numerical procedure, so it might yield suboptimal results. To do so calibration images are read once again and undistortion is applied to them. The undistorted images are shown in order to visually check if the distortion has been corrected. Once the data has been checked the parameters are is pickled saved to file. One sample of the input image, image with chessboard corners and the undistorted image is shown:
+The distortion coefficients and camera matrix are computed using `cv2.calibrateCamera()` function, where image and object points are passed as inputs. It is important to check if the result is satisfactory, since calibration is a nonlinear numerical procedure, so it might yield suboptimal results. To do so calibration images are read once again and undistortion is applied to them. The undistorted images are shown in order to visually check if the distortion has been corrected. Once the data has been checked, the parameters are pickled and saved to file. One sample of the input image, image with chessboard corners and the undistorted image is shown:
 
 | Original image     | Chessboard corners | Undistorted image  |
 |--------------------|--------------------|--------------------|
@@ -134,14 +124,14 @@ where **M** is camera matrix and *s* is scalar different from zero. This equatio
 |![Pinhole camera model][image4]|
 
 
-##Finding projective transformation
-Next step is to find the projective transform so the original images can be warped so that it looks like the camera is placed directly above the road. OOne approach is to hand tune the source and destination points, which are required to compute the transformation matrix. On the other hand, the script that does that for us can be created based on linear perspective geometry. Let's look at the perspective geometry on the renaissance painting "Architectural Veduta" by Italian painter Francesco di Giorgio Martini. It is easy to note that all lines meet at a single point called vanishing point. The second thing to note is that the square floor tiles centered horizontally in the image, appear as trapezoids with horizontal top and bottom edges and side edges radiating from the vanishing point.  
+## Finding Projective Transformation
+Next step is to find the projective transform so the original images can be warped to look like the camera is placed directly above the road. One approach is to hand-tune the source and destination points, which are required to compute the transformation matrix. On the other hand, the script that does that for us can be created based on linear perspective geometry. Let's look at the perspective geometry on the renaissance painting "Architectural Veduta" by Italian painter Francesco di Giorgio Martini. It is easy to note that all lines meet at a single point called vanishing point. The second thing to note is that the square floor tiles centered horizontally in the image, appear as trapezoids with horizontal top and bottom edges and side edges radiating from the vanishing point.
 
 | Architectural Veduta          |
 |-------------------------------|
 |![Architectural Veduta][image5]|
 
-Our goal is to achieve exactly opposite, to transform a trapezoidal patch of the road in front of the car to a rectangular image of the road. To do so, the trapezoid needs to be defined as previously noted, horizontal top and bottom centered with respect to a vanishing point, sides radiating from the vanishing point. Of course, to define that, the first task is to find the vanishing point. 
+Our goal is to achieve exactly opposite, to transform a trapezoidal patch of the road in front of the car to a rectangular image of the road. To do so, the trapezoid needs to be defined as previously noted, horizontal top and bottom centered with respect to a vanishing point, sides radiating from the vanishing point. Of course, to define that, the first task is to find the vanishing point.
 
 The vanishing point is the place where all parallel lines meet, so to find it we will be using images with straight lines `straight_lines1.jpg`, `straight_lines2.jpg`. First, the images are undistorted, the Canny filter is applied and most prominent lines are identified using `cv2.HoughLinesP`. These images show how the pipeline works:
 
@@ -176,28 +166,28 @@ The obtained source and destination points are:
 
 The selected range is quite big, but that had to be done in order to be able to find the lanes on the harder challenge video. In that video, the bends are much sharper than on the highway and might easily veer outside of the trapezoid causing the whole pipeline to fail.
 
-Once again, lets just reflect on what is the matrix returned by the `cv2.getPerspectiveTransform()`. It tells how the perspective transformation is going to be performed and where the pixel from original image  with the coordinates (*u*, *v*) is going to move after the transformation. The destination of that pixel on the warped image would be the point with the coordinates (*u<sub>w</sub>*, *v<sub>w</sub>*). The new position is calculated using::
+Once again, lets just reflect on what is the matrix returned by the `cv2.getPerspectiveTransform()`. It tells how the perspective transformation is going to be performed and where the pixel from original image  with the coordinates (*u*, *v*) is going to move after the transformation. The destination of that pixel on the warped image would be the point with the coordinates (*u<sub>w</sub>*, *v<sub>w</sub>*). The new position is calculated using:
 
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\begin{bmatrix}u_w\\v_w\\1\end{bmatrix}=s\mathbf{H}\begin{bmatrix}u\\v\\1\end{bmatrix}" alt="{mathcode}">
 </p>
 
-where **H** is homography matrix returned as a result of `cv2.getPerspectiveTransform()` and *s* is scalar different from zero. 
+where **H** is homography matrix returned as a result of `cv2.getPerspectiveTransform()` and *s* is scalar different from zero.
 
 
-##Estimating pixel resolution
-Next important step is to estimate resolution in pixels per meter of the warped image. It also can be done by hand, but as previously we'll create a script that does that for us. In the course materials, it was stated that width of the lane is no less than 12 feet. In order to estimate the resolution in pixels per meter, the images with the straight lines will be used. They will be unwarped and the distance between the lines will be measured. The lower of two distances will be assumed to be 12 feet or 3.6576 meters. 
+## Estimating Pixel Resolution
+Next important step is to estimate resolution in pixels per meter of the warped image. It also can be done by hand, but as previously we'll create a script that does that for us. In the course materials, it was stated that width of the lane is no less than 12 feet. In order to estimate the resolution in pixels per meter, the images with the straight lines will be used. They will be unwarped and the distance between the lines will be measured. The lower of two distances will be assumed to be 12 feet or 3.6576 meters.
 
-To start, the images with the straight lines would be unwarped and color would be converted to HLS space. To find the lanes the threshold would be applied to the luminesence component. Also, only some region of interest is taken into account. Since lines were straight heading towards the vanishing point, after the warping they will be vertical. The centroids of the blobs on left and right images would be calculated using image moments and function `cv2.moments()`. Since the lane lines are vertical the width of the lane in pixels is the difference between the *x* coordinates of two centroids. That allows for the calculation of the width in pixels and then resolution in *x* direction. This procedure is implemented between line 71 and 
+To start, the images with the straight lines would be unwarped and color would be converted to HLS space. To find the lanes the threshold would be applied to the luminesence component. Also, only some region of interest is taken into account. Since lines were straight heading towards the vanishing point, after the warping they will be vertical. The centroids of the blobs on left and right images would be calculated using image moments and function `cv2.moments()`. Since the lane lines are vertical the width of the lane in pixels is the difference between the *x* coordinates of two centroids. That allows for the calculation of the width in pixels and then resolution in *x* direction. This procedure is implemented between line 71 and
 91 of the script `find_perspective_transform.py`. The images that illustrate the procedure are shown below.
 
 | Warped image with parallel lane lines| Thresholded luminesence  |Lane with lines identified|
 |--------------------------------------|--------------------------|--------------------------|
 |![alt text][image11]                  |![alt text][image12]      |![alt text][image13]      |
 
-That is how to find resolution in *x* direction, but for finding resolution in *y* there is no such trick. Since nothing was estimated manually neither this will be. The camera matrix obtained by calibrations holds some relative information about resolutions in *x* and *y* direction. We can try to exploit that. To find resolution in *y* direction we have to do some more math. 
+That is how to find resolution in *x* direction, but for finding resolution in *y* there is no such trick. Since nothing was estimated manually neither this will be. The camera matrix obtained by calibrations holds some relative information about resolutions in *x* and *y* direction. We can try to exploit that. To find resolution in *y* direction we have to do some more math.
 
-Lets say, we have a coordinate frame attached to the road, as shown on image below. It is easy to see that transformation of the coordinates represented in the coordinate frame of the road to the coordinate frame of the warped image, consists of scaling and shifted. Scale in *x* direction corresponds to the number of pixel per meter in *x* direction. Same holds for *y*. In mathemathical form that can be written as:
+Lets say, we have a coordinate frame attached to the road, as shown on image below. It is easy to see that transformation of the coordinates represented in the coordinate frame of the road to the coordinate frame of the warped image consists of scaling and shifting. Scale in *x* direction corresponds to the number of pixel per meter in *x* direction. Same holds for *y*. In mathematical form that can be written as:
 <p align="center">
 <img src="https://latex.codecogs.com/svg.latex?\begin{bmatrix}u_w\\v_w\\1\end{bmatrix}=\begin{bmatrix}r_x&0&c_x\\0&r_y&c_y\\0&0&1\end{bmatrix}\begin{bmatrix}X_r\\Y_r\\1\end{bmatrix}" alt="{mathcode}">
 </p>
@@ -229,7 +219,7 @@ Where *h<sub>1</sub>, h<sub>2</sub>, h<sub>3</sub>* are columns of matrix (**HM*
 The rather simple equation is obtained at the end, but it took us a while to get there. This calculation is implemented in lines 91 and 92 of script `find_perspective_transform.py`. The final result is:
 
 
-| pix/meter in *x* direction | pix/meter in *y* direction | 
+| pix/meter in *x* direction | pix/meter in *y* direction |
 |----------------------------|----------------------------|
 |46.567                         |      33.0652548749         |
 
@@ -245,14 +235,14 @@ The pipeline is implemented in the class `LaneFinder` that does the lane finding
 The pipeline for single images goes through several steps. Let us see how initial image looks:
 ![alt text][image16]
 
-####1. Image undistortion, warping and color space conversion.
+#### 1. Image undistortion, warping and color space conversion.
 The image gets undistorted first, then the perspective transformation is applied to the undistorted image. After that, the images is converted into HLS and LAB color space. L channels of both HLS and LAB channels will be used to track the bright regions of the image, while B channel is used to track the yellow lines on the image. Also, some filtering is performed to reduce the noise, `cv2.medianBlur()` is used since it maintains the edges. Also for the use of the harder challenge video, the greenish areas are unmasked. Part of the code that performs this is from line 187 to 220. The undistorted and warped images are:
 
 | Undistorted original image  | Warped undistorted image   |
 |-----------------------------|----------------------------|
 |![alt text][image17]         |![alt text][image18]        |
 
-####2. Finding bright or yellow areas
+#### 2. Finding bright or yellow areas
 To find the bright or yellow areas, the morphological TOP HAT operation is used. It isolates the areas brighter than their surroundings. This operation is used in order to make pipeline robust against the lighting changes. In selected case, the lightness of the road surface changes, but we'll see that it does not affect the tophat morphological operation. The edge detection not used since they are extremely affected by the noise on the image, which makes them unsuitable for harder challenges. After applying TOP HAT operation, the image is thresholded using adaptive threshold which adds a bit more to the overall robustness. This part is implemented in lines 225 to 237. The resulting images are:
 
 | Tophat on L channel from LAB| Tophat on L channel from HLS  |Tophat on B channel from LAB|
@@ -262,16 +252,16 @@ To find the bright or yellow areas, the morphological TOP HAT operation is used.
 |![alt text][image22]         |![alt text][image23]           |![alt text][image24]        |
 
 
-####3. Calculating single mask and passing it to the `LaneLineFinder`
+#### 3. Calculating single mask and passing it to the `LaneLineFinder`
 Once the masks are calculated, logical *or* is applied between them in order to obtain the total mask. Since the threshold is kept quite low, there will be a lot of noise. To avoid noise interfering with lane finding procedure, the mask is eroded which removes all the regions smaller than the structuring element. Once that is finished the masks are passed to `LaneLineFinder` which actually looks for the line in the binary image. This part is implemented from line 236 to line 248. The results are:
 
 | Total mask           |     Eroded mask      |
 |----------------------|----------------------|
 |![alt text][image25]  |![alt text][image26]  |
 
-####4. Finding the line in a mask and fitting polynomial
+#### 4. Finding the line in a mask and fitting polynomial
 When the mask is found, the search for the line begins. The initial point to start a search is somewhere 1.82 meters (6 feet). Under the assumption that lane is 12feet wide and that the car is in its middle, we would be spot on. Since that might not hold, the search is performed in its surroundings. The window at the bottom of the image with the highest number of points included found. After that, we go one layer up and perform the same search but right now, we start from the maximum from the layer below. The search is performed until the top of the image is reached, gradually eliminating points outside of the maximal region. Function that does this is `LaneLineFinder.find_lane_line()`. After the lane points have been isolated, the polynomial fit is performed using `LaneLineFinder.fit_lane_line()`. In that procedures some statistics are calculated which help determine if the found line is good or not. The statistics include:
- 1. Number of points in the fit 
+ 1. Number of points in the fit
  2. Quality of the fit calculated using covariance matrix returned by `numpy.polyfit`
  3. Curvature of the road
  4. How far lane is from the center of the car
@@ -282,21 +272,21 @@ All of these have to be above some empirically defined threshold. The maximal re
 |----------------------|----------------------|
 |![alt text][image27]  |![alt text][image28]  |
 
-####5. Draw lane on original image and calculate curvature
+#### 5. Draw lane on original image and calculate curvature
 If lanes are found, the curvature and position of the centre of the car is calculated using functions `get_curvature()` and `get_center_shift()`. Since the two lines are present, for the coefficient of the polynomial the mean value is used. The *y* coordinate for which the polynomials are evaluated is the bottom of the image. After that, the lines are drawn on a warped image and then unwarped and added to the original image. The last thing is to print out the values of curvature and offset of the center of the car. Results for all provided images can be found in [output_images](./output_images). Here is the result for discussed case:
 
 | Warped lines         |     Final result    |
 |----------------------|----------------------|
 |![alt text][image29]  |![alt text][image30]  |
 
-###Videos 
+### Videos
 For the videos, the pipeline follows the basic pipeline applied to single images. Additionally, because of the temporal dimension, some additional filtering is applied. Here is what is done:
- 1. The polynomial coefficients are averaged over last 7 iterations. That helps make the lane lines smoother and procedures more robust (line 88). 
+ 1. The polynomial coefficients are averaged over last 7 iterations. That helps make the lane lines smoother and procedures more robust (line 88).
  2. The lane has to be in close proximity to its previous position. That helps us narrow the search and avoid looking for windows with a maximum number of points in it (lines 132 -138).
  3. The right lane has to be approximately 12ft (3.6m) right from the left lane (lines 146-147, 243- 246)
- 4. Left and right lane should have similar curvature and angle (lines 180-186, 251-252). 
+ 4. Left and right lane should have similar curvature and angle (lines 180-186, 251-252).
 
-The pipeline is run on all three provided videos. It works great for `project_video.mp4` and `challenge_video.mp4`. It works with `harder_challenge_video.mp4` as well but loses the lane a few times. 
+The pipeline is run on all three provided videos. It works great for `project_video.mp4` and `challenge_video.mp4`. It works with `harder_challenge_video.mp4` as well but loses the lane a few times.
 Here are links to the videos:
 
  1. [project_video](./output_videos/lane_project_video.mp4)
@@ -305,46 +295,40 @@ Here are links to the videos:
 
 ---
 
-##Discussion
+## Discussion
 
-The biggest issue by far for me were sudden changes of light conditions. In those cases, the lines get either completely lost (going from bright to dark) or image gets filled with noise coming from the white spots. Although I have done the best I can to make pipeline robust against that kind of changes, they still can cause major problems, which is evident from [harder challenge video](./output_videos/lane_harder_challenge_video.mp4). More advanced filtering and brightness equalization techniques have to be examined. 
- 
-The averaging out of polynomial coefficients over the last couple of iterations is inappropriate. Effects of it can be in [harder_challenge_video](./output_videos/lane_harder_challenge_video.mp4) where lane computed by the code lags behind the lane on the image, especially in the case of sharp bends. Some better filtering technique has to be applied.
+The biggest issue by far for me were sudden changes of light conditions. In those cases, the lines get either completely lost (going from bright to dark) or image gets filled with noise coming from the white spots. Although I have done the best I can to make pipeline robust against that kind of changes, they still can cause major problems, which is evident from [harder challenge video](./output_videos/lane_harder_challenge_video.mp4). More advanced filtering and brightness equalization techniques have to be examined.
 
+The averaging out of polynomial coefficients over the last couple of iterations is inappropriate. Effects of this can be seen in [harder_challenge_video](./output_videos/lane_harder_challenge_video.mp4) where lane computed by the code lags behind the lane on the image, especially in the case of sharp bends. Some better filtering technique has to be applied.
 
+---
 
+## Additional Resources for Autonomous Drivers
 
+1- Nanodegrees Programs: https://www.udacity.com/nanodegree
+Nanodegree Plus (job guarantee): https://www.udacity.com/nanodegree/plus
+UConnect (weekly in-person study sessions):  https://www.udacity.com/uconnect
 
+2- Courses on Udacity Machine Learning Engineer Nanodegree by Google (Currently Available): https://www.udacity.com/course/machine-learning-engineer-nanodegree-by-google--nd009
 
+3- Artificial Intelligence for Robots (Free Course) https://www.udacity.com/course/artificial-intelligence-for-robotics--cs373
 
-## Additional resources for autonomous dribvers
+4- Intro to Statistics (Free Course) https://www.udacity.com/course/intro-to-statistics--st101
 
+5- Deep Learning (Free Course) https://www.udacity.com/course/deep-learning--ud730
 
-1-Nanodegrees Programs: https://www.udacity.com/nanodegree
-Nanodegree Plus (job guarantee): https://www.udacity.com/nanodegree/plus 
-UConnect (weekly in-person study sessions):  https://www.udacity.com/uconnect 
+6- Programming Foundations with Python (Free Course) https://www.udacity.com/course/programming-foundations-with-python--ud036
 
-2-Courses on Udacity Machine Learning Engineer Nanodegree by Google (Currently Available): https://www.udacity.com/course/machine-learning-engineer-nanodegree-by-google--nd009
+7- Introduction to Computer Vision: https://www.udacity.com/course/introduction-to-computer-vision--ud810
 
-3-Artificial Intelligence for Robots (Free Course) https://www.udacity.com/course/artificial-intelligence-for-robotics--cs373
-
-3-Intro to Statistics (Free Course) https://www.udacity.com/course/intro-to-statistics--st101
-
-4-Deep Learning (Free Course) https://www.udacity.com/course/deep-learning--ud730
-
-5-Programming Foundations with Python (Free Course) https://www.udacity.com/course/programming-foundations-with-python--ud036 
-
-6-Introduction to Computer Vision: https://www.udacity.com/course/introduction-to-computer-vision--ud810
-Cool topics for self driving car course should cover: 
+**Cool topics for a self-driving car course should cover:**
 Deep Learning, Computer Vision, Vehicle Dynamics, Controllers, Localization, Mapping (SLAM), Sensors & Fusion
 
 ### Reading Resources Udacity
 
-https://medium.com/udacity/self-driving-car-employers-f24c0013cf1d#.3jlgb1c1i 
+https://medium.com/udacity/self-driving-car-employers-f24c0013cf1d#.3jlgb1c1i
 
 https://www.quora.com/Are-Udacity-Nanodegrees-worth-it-for-finding-a-job
-
-http://blog.udacity.com/2015/03/udacity-nanodegree-reviews-your-questions-answered.html
 
 http://blog.udacity.com/2015/03/udacity-nanodegree-reviews-your-questions-answered.html
 
@@ -363,7 +347,7 @@ https://www.youtube.com/watch?v=fQmOpxEvpvI
 
 http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
 
-https://www.cbinsights.com/blog/autonomous-driverless-vehicles-corporations-list/ 
+https://www.cbinsights.com/blog/autonomous-driverless-vehicles-corporations-list/
 
 http://www.theverge.com/2016/6/6/11866868/comma-ai-george-hotz-interview-self-driving-cars
 
@@ -379,7 +363,7 @@ https://www.reddit.com/r/SelfDrivingCars/comments/4vz3y7/commaai_for_the_people_
 
 https://www.cityscapes-dataset.com/
 
-http://robotcar-dataset.robots.ox.ac.uk/examples/ 
+http://robotcar-dataset.robots.ox.ac.uk/examples/
 
 http://selfracingcars.com/blog/2016/7/26/polysync
 
@@ -415,13 +399,13 @@ video​ ​ datasets.​ ​ arXiv​ ​ preprint​ ​ arXiv:1612.01079,​ 
 accessed​ ​ 07-Mar-2017].
 
 
-[7] Comma.ai.Public accessed​ ​ 07-Mar-2017].driving   dataset.https://github.com/commaai/research,2017.[Online;
+[7] Comma.ai. Public driving dataset. https://github.com/commaai/research, 2017. [Online; accessed 07-Mar-2017].
 
 
 [8] Dickmanns and B. Mysliwetz, “Recursive 3-D road and relative ego- state recognition,”
 IEEE​ ​ Trans.​ ​ Pattern​ ​ Anal.​ ​ Mach.​ ​ Intell.,​ ​ vol.​ ​ 14,​ ​ no.​ ​ 2,​ ​ pp.​ ​ 199–213,​ ​ Feb.​ ​ 1992.
 
-[9] ​$ Car​ ​ accidents.​ http://en.wikipedia.org/wiki/car_accident $
+[9] Car accidents. http://en.wikipedia.org/wiki/car_accident
 
 
 [10] Caltech​ ​ Lanes​ ​ datasets​ , ​ ​ http://www.mohamedaly.info/datasets/caltech-lanes
@@ -434,19 +418,4 @@ transform,”​ ​ in​ ​ Proc.​ ​ Symp.​ ​ Inf.​ ​ Technol.,�
 [12] J. Wang, Y. Wu, Z. Liang, and Y. Xi, “Lane detection based on random hough transform
 on​ ​ region​ ​ of​ ​ interesting,”​ ​ in​ ​ Proc.​ ​ IEEE​ ​ Conf.​ ​ Inform.​ ​ Autom.,​ ​ 2010,​ ​ pp.​ ​ 1735–1740.
 
-------------------------------
-A well written README file can enhance your project and portfolio. Develop your abilities to create professional README files by completing this course.
-[this  course](https://www.udacity.com/course/writing-readmes--ud777).
-
-------------------------------------------------------------
-
-    2-Apply a distortion correction to raw images.
-    3-Use color transforms, gradients, etc., to create a thresholded binary image.
-    4-Apply a perspective transform to rectify binary image ("birds-eye view").
-    5-Detect lane pixels and fit to find the lane boundary.
-    6-Determine the curvature of the lane and vehicle position with respect to center.
-    7-Warp the detected lane boundaries back onto the original image.
-    8-Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
-
-
-----------------------------------------------------------------------------
+---
