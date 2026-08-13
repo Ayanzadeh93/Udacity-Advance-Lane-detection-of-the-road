@@ -305,6 +305,10 @@ class LaneFinder:
         return lane_img
 
 
+if not os.path.exists(CALIB_FILE_NAME):
+    from calibrate import calibrate
+    calibrate(CALIB_FILE_NAME)
+
 with open(CALIB_FILE_NAME, 'rb') as f:
     calib_data = pickle.load(f)
 cam_matrix = calib_data["cam_matrix"]
